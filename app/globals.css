@@ -1,26 +1,142 @@
 @import "tailwindcss";
 
+/* ================= DESIGN TOKENS ================= */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f4f6f8;
+  --foreground: #0f172a;
+
+  --card: #ffffff;
+  --border: #e4e4e7;
+
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+
+  --muted: #64748b;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
+/* Dark mode */
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --card: #111111;
+    --border: #27272a;
   }
 }
 
+/* ================= BASE ================= */
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+  @apply antialiased;
+}
+
+/* Smooth UI */
+* {
+  @apply transition-all duration-150 ease-in-out;
+}
+
+/* ================= SCROLLBAR ================= */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5f5;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* ================= INPUT ================= */
+.input {
+  @apply w-full border rounded-md px-3 py-2 text-sm bg-white;
+  border-color: var(--border);
+
+  @apply focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500;
+
+  @apply placeholder:text-zinc-400;
+}
+
+/* ================= BUTTON ================= */
+.btn {
+  @apply w-full border rounded-md px-3 py-2 text-xs text-left;
+  border-color: var(--border);
+
+  @apply bg-white hover:bg-zinc-50 active:scale-[0.98];
+}
+
+/* Primary button */
+.btn-primary {
+  background: var(--primary);
+  color: white;
+
+  @apply px-4 py-2 rounded-md text-sm font-medium;
+
+  @apply hover:opacity-90 active:scale-[0.98];
+}
+
+/* ================= CARD ================= */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+
+  @apply rounded-lg shadow-sm;
+}
+
+/* ================= SECTION HEADER ================= */
+.section-header {
+  @apply px-3 py-2 text-sm font-medium flex justify-between items-center;
+  background: #fafafa;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ================= TAG / SKILL ================= */
+.tag {
+  @apply px-3 py-1 rounded-full text-xs flex items-center gap-2;
+  background: #f1f5f9;
+  border: 1px solid var(--border);
+
+  @apply hover:bg-zinc-200;
+}
+
+/* ================= TOOLBAR BUTTON ================= */
+.toolbar-btn {
+  @apply px-3 py-1 text-xs rounded-md capitalize;
+  @apply bg-zinc-100 text-zinc-600 hover:bg-zinc-200;
+}
+
+.toolbar-btn-active {
+  background: var(--primary);
+  color: white;
+}
+
+/* ================= PREVIEW CARD ================= */
+.preview-card {
+  @apply bg-white border rounded-md shadow-sm overflow-hidden;
+}
+
+/* ================= GLASS EFFECT ================= */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(8px);
+}
+
+/* ================= MICRO INTERACTIONS ================= */
+
+/* Hover lift */
+.hover-lift {
+  @apply hover:shadow-md hover:-translate-y-[1px];
+}
+
+/* Click effect */
+.click-scale {
+  @apply active:scale-[0.97];
 }

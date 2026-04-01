@@ -1,65 +1,98 @@
-import Image from "next/image";
+"use client";
+
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const router = useRouter();
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <div className="min-h-screen bg-gradient-to-br from-zinc-50 via-white to-zinc-100 text-zinc-900">
+
+      {/* NAVBAR */}
+      <header className="flex items-center justify-between px-8 py-4 border-b bg-white/70 backdrop-blur-md">
+        <h1 className="text-lg font-semibold tracking-tight">
+          ResumeAI
+        </h1>
+
+        <button
+          onClick={() => router.push("/resume-builder")}
+          className="px-4 py-2 text-sm rounded-md bg-blue-600 text-white hover:bg-blue-700"
+        >
+          Get Started
+        </button>
+      </header>
+
+      {/* HERO SECTION */}
+      <section className="flex flex-col items-center justify-center text-center px-6 py-24">
+        
+        <h1 className="text-4xl md:text-5xl font-bold tracking-tight max-w-3xl leading-tight">
+          Build Professional Resumes in Minutes 🚀
+        </h1>
+
+        <p className="mt-4 text-zinc-600 max-w-xl text-lg">
+          Create, edit, and manage multiple resumes with AI-powered suggestions,
+          modern templates, and instant preview.
+        </p>
+
+        {/* CTA */}
+        <div className="mt-8 flex gap-4">
+          <button
+            onClick={() => router.push("/resume-builder")}
+            className="px-6 py-3 rounded-md bg-blue-600 text-white font-medium hover:bg-blue-700"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            Generate Resume
+          </button>
+
+          <button
+            onClick={() => router.push("/resume-history")}
+            className="px-6 py-3 rounded-md border border-zinc-300 hover:bg-zinc-100"
           >
-            Documentation
-          </a>
+            View Resumes
+          </button>
         </div>
-      </main>
+
+      </section>
+
+      {/* FEATURES */}
+      <section className="px-6 pb-20 max-w-6xl mx-auto">
+        
+        <h2 className="text-2xl font-semibold text-center mb-10">
+          Features
+        </h2>
+
+        <div className="grid md:grid-cols-3 gap-6">
+          
+          {/* Feature 1 */}
+          <div className="bg-white border border-zinc-200 rounded-xl p-6 shadow-sm hover:shadow-md transition">
+            <h3 className="font-semibold mb-2">Live Preview</h3>
+            <p className="text-sm text-zinc-600">
+              See your resume update in real-time as you edit.
+            </p>
+          </div>
+
+          {/* Feature 2 */}
+          <div className="bg-white border border-zinc-200 rounded-xl p-6 shadow-sm hover:shadow-md transition">
+            <h3 className="font-semibold mb-2">Multiple Templates</h3>
+            <p className="text-sm text-zinc-600">
+              Choose from modern, corporate, and ATS-friendly designs.
+            </p>
+          </div>
+
+          {/* Feature 3 */}
+          <div className="bg-white border border-zinc-200 rounded-xl p-6 shadow-sm hover:shadow-md transition">
+            <h3 className="font-semibold mb-2">Save & Manage</h3>
+            <p className="text-sm text-zinc-600">
+              Store multiple resumes and manage them easily.
+            </p>
+          </div>
+
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="text-center text-sm text-zinc-500 py-6 border-t">
+        Built with ❤️ using Next.js
+      </footer>
     </div>
   );
 }
